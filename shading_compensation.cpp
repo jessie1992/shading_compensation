@@ -23,7 +23,7 @@
 cv::Mat shadingCompensation(cv::Mat input) {
 	
 	// Read the shading mask (16U) and convert it to 32F. 
-	cv::Mat shading_mask = cv::imread("shading_mask_16bit.tif", cv::IMREAD_ANYDEPTH);
+	cv::Mat shading_mask = cv::imread("image/shading_mask_16bit.tif", cv::IMREAD_ANYDEPTH);
 	shading_mask.convertTo(shading_mask, CV_32F, 0.0001, 0);
 
 	// Convert input image (16U) to 32F.
@@ -41,12 +41,12 @@ cv::Mat shadingCompensation(cv::Mat input) {
 int main() {
 
 	// A 12-bit image is in a 16-bit container.
-	cv::Mat input = cv::imread("input_16bit.tif", cv::IMREAD_ANYDEPTH); // 16U
+	cv::Mat input = cv::imread("image/input_16bit.tif", cv::IMREAD_ANYDEPTH); // 16U
 
 	cv::Mat result;
 	result = shadingCompensation(input);
 
-	cv::imwrite("result.jpg", result);
+	cv::imwrite("image/result.jpg", result);
 
 	system("pause");
 	return 0;
